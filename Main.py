@@ -1,33 +1,5 @@
-def AdicionaCliente(clientes):
-    cpf = input("Digite o CPF do cliente:")
-    if VerificaCpf(cpf, clientes):
-        print("CPF já existente!")
-    else:    
-        nome = input("Digite o Nome do cliente:")
-        endereco = input("Digite o Endereco do cliente:")
-        cidade = input("Digite o Cidade do cliente:")
-        telefone = input("Digite o Telefone do cliente:")
-        data_nascimento = input("Digite o Data de Nascimento do cliente:")
-
-        cliente = {
-        'CPF': cpf,
-        'Nome': nome,
-        'Endereco': endereco,
-        'Cidade': cidade,
-        'Telefone': telefone,
-        'Data_nascimento': data_nascimento
-}
-        clientes.append(cliente)
-        print("Cliente adicionado com sucesso.")
-
-        
-
-def VerificaCpf(cpf, clientes):
-    for cliente in clientes:
-        if cliente['CPF'] == cpf:
-            return True
-        else:
-            return False
+from Cliente import *
+from Apartamento import *
 
 def SubmenuCliente(clientes):
     while True:
@@ -43,8 +15,10 @@ def SubmenuCliente(clientes):
         
         if escolha_submenu == 1:
             print("Listar Todos os Clientes")
+            ListarClientes(clientes)
         elif escolha_submenu == 2:
             print("Pesquisar um Cliente")
+            ProcuraCliente(clientes)
         elif escolha_submenu == 3:
             print("Incluir um Cliente")
             AdicionaCliente(clientes)
@@ -58,10 +32,37 @@ def SubmenuCliente(clientes):
         else:
             print("Opção inválida. Por favor, escolha novamente.")
         
-        
+def SubmenuApartamento(apartamentos):
+    while True:
+        print("1 - Listar Todos os Apartamentos:")
+        print("2 - Pesquisar um Apartamento:")
+        print("3 - Incluir um Apartamento:")
+        print("4 - Alterar um Apartamentos:")
+        print("5 - Excluir um Apartamentos:")
+        print("6 - Voltar ao Menu Principal")
+        escolha_submenu = int(input("O que deseja fazer no Submenu de Apartamentos?"))
+
+        if escolha_submenu == 1:
+            print("Listar Todos os Apartamentos")
+        elif escolha_submenu == 2:
+            print("Pesquisar um Apartamento:")
+        elif escolha_submenu == 3:
+            print("Incluir um Apartamento:")
+            AdicionaApartamento(apartamentos) 
+        elif escolha_submenu == 4:
+            print("Alterar um Apartamento:")
+        elif escolha_submenu == 5:
+            print("Excluir um Apartamento:")
+        elif escolha_submenu == 6:     
+            print("6 - Voltar ao Menu Principal")      
+            break
+        else:
+            print("Opção inválida. Por favor, escolha novamente.")
+
 
 def Menu():
     lista_clientes = [] 
+    lista_apartamentos = []
     while True:
         print("Bem Vindo ao Menu! - Menu Principal")
         print("1 - Submenu de Clientes")
@@ -73,7 +74,7 @@ def Menu():
         if escolha == 1:
             SubmenuCliente(lista_clientes)
         elif escolha == 2:
-            print("Submenu de Apartamentos")
+            SubmenuApartamento(lista_apartamentos)
         elif escolha == 3:
             print("Submenu de Reserva de Apartamentos")
         elif escolha == 4:
@@ -84,6 +85,4 @@ def Menu():
         else:
             print("Opção inválida. Por favor, escolha novamente.")
 
-
-
-Menu()
+Menu()            
