@@ -17,15 +17,17 @@ def SubmenuCliente(clientes):
             print("Listar Todos os Clientes")
             ListarClientes(clientes)
         elif escolha_submenu == 2:
-            print("Pesquisar um Cliente")
+            print("Pesquisar um Cliaente")
             ProcuraCliente(clientes)
         elif escolha_submenu == 3:
             print("Incluir um Cliente")
             AdicionaCliente(clientes)
         elif escolha_submenu == 4:
             print("Alterar um Cliente")
+            AlterarCliente(clientes)
         elif escolha_submenu == 5:
             print("Excluir um Cliente")
+            ExcluirCliente(clientes)
         elif escolha_submenu == 6:
             print("Voltando ao Menu Principal...")
             break
@@ -44,15 +46,19 @@ def SubmenuApartamento(apartamentos):
 
         if escolha_submenu == 1:
             print("Listar Todos os Apartamentos")
+            ListarApartamentos(apartamentos)
         elif escolha_submenu == 2:
             print("Pesquisar um Apartamento:")
+            ProcuraApartamento(apartamentos)
         elif escolha_submenu == 3:
             print("Incluir um Apartamento:")
             AdicionaApartamento(apartamentos) 
         elif escolha_submenu == 4:
             print("Alterar um Apartamento:")
+            AlterarApartamento(apartamentos)
         elif escolha_submenu == 5:
             print("Excluir um Apartamento:")
+            ExcluirApartamento(apartamentos)
         elif escolha_submenu == 6:     
             print("6 - Voltar ao Menu Principal")      
             break
