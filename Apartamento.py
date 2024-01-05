@@ -10,21 +10,20 @@ def AdicionaApartamento(apartamentos):
              numero_pessoas = int(input("Digite a quantidade maxima de pessoas:"))
              valor_diaria = int(input("Qual o valor da diária?:"))
 
-        apartamento = {
-            'Codigo': codigo,
-            'Tipo': tipo,
-            'Numero_Pessoas': numero_pessoas,
-            'Valor_Diaria': valor_diaria
-}            
-        apartamentos.append(apartamento)
-        print("Apartamento adicionado com sucesso!")    
-
+             apartamento = {
+                'Codigo': codigo,
+                'Tipo': tipo,
+                'Numero_Pessoas': numero_pessoas,
+                'Valor_Diaria': valor_diaria
+            }            
+             apartamentos.append(apartamento)
+             print("Apartamento adicionado com sucesso!")
 
 def VerificaCodigo(codigo, apartamentos):
     for apartamento in apartamentos:
         if apartamento['Codigo'] == codigo:
             return True
-        return False
+    return False
 
 def ListarApartamentos(apartamentos):
     if not apartamentos:
@@ -55,11 +54,16 @@ def AlterarApartamento(apartamentos):
     for apartamento in apartamentos:
          if VerificaCodigo(codigo, apartamentos):
                 apartamento['Codigo'] = int(input("Digite o novo código do apartamento:"))
-                apartamento['Tipo'] = input("Escolha um outro tipo de apartamento: Standart, Luxo, SuperLuxo:").lower()
-                apartamento['Numero_Pessoas'] = input("Digite o número de pessoas:")
-                apartamento['Valor_Diaria'] = input("Digite o valor:")
-                print("Apartamento alterado com sucesso!")
-         else:
+                tipo = input("Escolha um outro tipo de apartamento: Standard, Luxo, SuperLuxo:").lower()
+                if tipo != "standart" and tipo != "superluxo" and tipo != "luxo":
+                    print("Escolha um tipo de apartamento válido!")
+                else:
+                    apartamento['Tipo'] = tipo    
+                    apartamento['Numero_Pessoas'] = input("Digite o número de pessoas:")
+                    apartamento['Valor_Diaria'] = input("Digite o valor:")
+                    print("Apartamento alterado com sucesso!")
+                    break
+         else:  
             print("Esse apartamento não existe!")     
 
 def ExcluirApartamento(apartamentos):

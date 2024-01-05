@@ -1,3 +1,5 @@
+from datetime import datetime
+
 def AdicionaCliente(clientes):
     cpf = input("Digite o CPF do cliente:")
     if VerificaCpf(cpf, clientes):
@@ -7,26 +9,29 @@ def AdicionaCliente(clientes):
         endereco = input("Digite o Endereco do cliente:")
         cidade = input("Digite o Cidade do cliente:")
         telefone = input("Digite o Telefone do cliente:")
-        data_nascimento = input("Digite o Data de Nascimento do cliente:")
-
-        cliente = {
-        'CPF': cpf,
-        'Nome': nome,
-        'Endereco': endereco,
-        'Cidade': cidade,
-        'Telefone': telefone,
-        'Data_nascimento': data_nascimento
+        data_nascimento = input("Digite a data de nascimento no formato DD/MM/AAAA: ")
+        try:
+            data_nascimento == datetime.strptime(data_nascimento, "%d/%m/%Y")
+        except ValueError:
+            print("Formato de data inválido. Certifique-se de usar o formato DD/MM/AAAA.")
+        else:    
+            cliente = {
+            'CPF': cpf,
+            'Nome': nome,
+            'Endereco': endereco,
+            'Cidade': cidade,
+            'Telefone': telefone,
+            'Data_nascimento': data_nascimento
 }
-        clientes.append(cliente)
-        print("Cliente adicionado com sucesso.")
+            clientes.append(cliente)
+            print("Cliente adicionado com sucesso.")
 
 
 def VerificaCpf(cpf, clientes):
     for cliente in clientes:
         if cliente['CPF'] == cpf:
             return True
-        else:
-            return False
+    return False
 
 def ListarClientes(clientes):
     if not clientes:
@@ -66,8 +71,15 @@ def AlterarCliente(clientes):
                 cliente['Endereco'] = input("Digite o novo Endereco do cliente:")
                 cliente['Cidade'] = input("Digite o novo Cidade do cliente:")
                 cliente['Telefone'] = input("Digite o novo Telefone do cliente:")
-                cliente['Data_nascimento'] = input("Digite a nova Data de Nascimento do cliente:")
-                print("Cliente alterado com sucesso!")
+                data_nascimento = input("Digite a nova Data de Nascimento do cliente:")
+                try :
+                    data_nascimento == datetime.strptime(data_nascimento, "%d/%m/%Y")
+                    cliente['Data_Nascimento'] = data_nascimento 
+                except ValueError:
+                    print("Formato de data inválido. Certifique-se de usar o formato DD/MM/AAAA.")
+                else:       
+                    print("Cliente alterado com sucesso!")
+                break
             else:
                 print("Cliente não encontrado.")
 

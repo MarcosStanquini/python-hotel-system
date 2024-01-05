@@ -1,5 +1,6 @@
 from Cliente import *
 from Apartamento import *
+from Reserva import *
 
 def SubmenuCliente(clientes):
     while True:
@@ -65,10 +66,42 @@ def SubmenuApartamento(apartamentos):
         else:
             print("Opção inválida. Por favor, escolha novamente.")
 
+def SubmenuReserva(clientes, apartamentos, reservas):
+    while True:
+        print("Submenu Reserva:")
+        print("1 - Listar Todas as Reservas:")
+        print("2 - Pesquisar uma Reserva:")
+        print("3 - Incluir uma Reserva:")
+        print("4 - Alterar uma Reserva:")
+        print("5 - Excluir uma Reserva:")
+        print("6 - Voltar ao Menu Principal")
+
+        escolha_submenu = int(input("O que deseja fazer no Submenu de Reservas?"))
+        
+        if escolha_submenu == 1:
+            print("Listar Todas as Reservas")
+            ListarReservas(reservas)
+        elif escolha_submenu == 2:
+            print("Pesquisar uma Reserva")
+            #ProcuraReserva(reservas)
+        elif escolha_submenu == 3:
+            print("Incluir uma Reserva")
+            AdicionarReserva(clientes, apartamentos, reservas)
+        elif escolha_submenu == 4:
+            print("Alterar uma Reserva")
+           # ExcluirReserva(reservas)
+        elif escolha_submenu == 6:
+            print("Voltando ao Menu Principal...")
+            break
+        else:
+            print("Opção inválida. Por favor, escolha novamente.")
+
+
 
 def Menu():
     lista_clientes = [] 
     lista_apartamentos = []
+    lista_reservas = []
     while True:
         print("Bem Vindo ao Menu! - Menu Principal")
         print("1 - Submenu de Clientes")
@@ -83,6 +116,7 @@ def Menu():
             SubmenuApartamento(lista_apartamentos)
         elif escolha == 3:
             print("Submenu de Reserva de Apartamentos")
+            SubmenuReserva(lista_clientes, lista_apartamentos, lista_reservas)
         elif escolha == 4:
             print("Relatório")
         elif escolha == 5:
