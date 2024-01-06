@@ -1,6 +1,7 @@
 from Cliente import *
 from Apartamento import *
 from Reserva import *
+from datetime import datetime
 
 def SubmenuCliente(clientes):
     while True:
@@ -89,6 +90,7 @@ def SubmenuReserva(clientes, apartamentos, reservas):
             AdicionarReserva(clientes, apartamentos, reservas)
         elif escolha_submenu == 4:
             print("Alterar uma Reserva")
+            AlterarReserva(clientes, apartamentos,  reservas)
         elif escolha_submenu == 5:
             print("Excluir uma Reserva")
             ExcluiReserva(reservas)    
@@ -97,7 +99,6 @@ def SubmenuReserva(clientes, apartamentos, reservas):
             break
         else:
             print("Opção inválida. Por favor, escolha novamente.")
-
 
 
 def Menu():
@@ -121,6 +122,7 @@ def Menu():
             SubmenuReserva(lista_clientes, lista_apartamentos, lista_reservas)
         elif escolha == 4:
             print("Relatório")
+            Relatorio(lista_reservas)
         elif escolha == 5:
             print("Saindo do programa. Até mais!")
             break
