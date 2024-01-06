@@ -83,13 +83,15 @@ def SubmenuReserva(clientes, apartamentos, reservas):
             ListarReservas(reservas)
         elif escolha_submenu == 2:
             print("Pesquisar uma Reserva")
-            #ProcuraReserva(reservas)
+            ProcuraReserva(reservas)
         elif escolha_submenu == 3:
             print("Incluir uma Reserva")
             AdicionarReserva(clientes, apartamentos, reservas)
         elif escolha_submenu == 4:
             print("Alterar uma Reserva")
-           # ExcluirReserva(reservas)
+        elif escolha_submenu == 5:
+            print("Excluir uma Reserva")
+            ExcluiReserva(reservas)    
         elif escolha_submenu == 6:
             print("Voltando ao Menu Principal...")
             break
